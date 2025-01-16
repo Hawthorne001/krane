@@ -1,5 +1,28 @@
 ## next
 
+## 3.7.0
+
+- Annotate individual resources with `last-applied-configuration` when using `krane deploy` with `--annotate-individuals`. Previously, eligible resources that were made with `create` or `replace` were applied along with the rest of the resources. However, this causes issues when a mutating admission controller modifies otherwise immutable fields.
+
+## 3.6.3
+
+- Test against k8s 1.31
+
+## 3.6.2
+
+- Pinning `stats-instrument` to < 3.9 to avoid breaking changes.
+
+## 3.6.1
+
+*Features*
+
+- Enable the option to bypass endpoint validation for a service by using the annotation `krane.shopify.io/skip-endpoint-validation: true`.
+
+## 3.6.0
+
+- Test against k8s 1.29, 1.30
+- Drop support for k8s 1.24
+
 ## 3.5.3
 
 - Fix a minor bug in the RestartAPIError class (https://github.com/Shopify/krane/pull/953)

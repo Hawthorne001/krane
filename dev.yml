@@ -6,10 +6,18 @@ up:
   - podman
   - kind:
       name: krane
-      image: kindest/node:v1.26.4@sha256:354b7b57f16dc42d5ccc8c7eb3c3c8b3818531d35bc82600ba874a85fa1fa28a
+      image: kindest/node:v1.31.2@sha256:18fbefc20a7113353c7b75b5c869d7145a6abd6269154825872dc59c1329912e
 commands:
   test:
-    run: bin/test
+    run: bin/test unit_test && bin/test cli_test && bin/test serial_integration_test && bin/test integration_test
+  test-unit:
+    run: bin/test unit_test
+  test-cli:
+    run: bin/test cli_test
+  test-serial_integration:
+    run: bin/test serial_integration_test,
+  test-integration:
+    run: bin/test integration_test
   tophat:
     run: PRINT_LOGS=1 bundle exec ruby -I test test/integration/krane_deploy_test.rb -n/${1}/
     desc: Tophat a change by running a test scenario with logging output enabled.
